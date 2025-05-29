@@ -3,9 +3,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import Home from './pages/Home';
-import Matchup from './pages/Matchup';
-import Vote from './pages/Vote';
-import NotFound from './pages/NotFound';
+import Matchup from './pages/SCMatchup';
+import Vote from './pages/SCVote';
+import NotFound from './pages/SCNotFound';
 
 const router = createBrowserRouter([
   {
