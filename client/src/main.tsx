@@ -3,14 +3,38 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Apod7Day from './pages/Apod7Day';
 import ApodRandom from './pages/ApodRandom';
 
-const App: React.FC = () => (
-  <Router>
-    <Routes>
-      <Route path="/gallery" element={<Apod7Day />} />
-      <Route path="/random" element={<ApodRandom />} />
-      {/* other routes here */}
-    </Routes>
-  </Router>
-);
+import App from './App';
+import Home from './pages/Home';
+import Matchup from './pages/SCMatchup';
+import Vote from './pages/SCVote';
+import NotFound from './pages/SCNotFound';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      }, {
+        path: '/matchup',
+        element: <Matchup />
+      }, {
+        path: '/matchup/:id',
+        element: <Vote />
+      },
+    ],
+  },
+]);
+
+const rootElement = document.getElementById('root');
+
+if(rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <RouterProvider router={router} />
+  );
+}
 
 export default App;
