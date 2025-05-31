@@ -1,7 +1,12 @@
-const Login() {
+import Header from "../components/header"
+
+function Login() {
     return (
-        <div className="login-page">
-            <
-        </div>
+        <>
+            <Header />
+            <div className="login-page"></div>
+        </>
     )
 }
+
+export default Login;

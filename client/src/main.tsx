@@ -2,8 +2,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
+import Login from './pages/Login';
 import Home from './pages/Home';
-import Matchup from './pages/SCMatchup';
 import Vote from './pages/SCVote';
 import NotFound from './pages/SCNotFound';
 
@@ -15,10 +15,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Login />
       }, {
-        path: '/matchup',
-        element: <Matchup />
+        path: '/Home',
+        element: <Home />
       }, {
         path: '/matchup/:id',
         element: <Vote />
