@@ -1,8 +1,22 @@
 /* styling for just the footer */
 
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 footer {
-  background-color: #333;
-  color: white;
+  background-color: white;
+  width: 100vh;
+  color: #333;
   padding: 1rem;
   text-align: center;
+  margin-top: auto;
 }

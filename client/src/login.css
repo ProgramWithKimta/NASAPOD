@@ -1,0 +1,59 @@
+/* styling for just the login page */
+
+body {
+    background: #ffffff url("https://img.freepik.com/free-vector/vintage-monochrome-astronaut-concept_225004-1185.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left;
+    margin: 0;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+.login-container {
+  /* height: 100vh; */
+  width: 300px;
+  display: flex;
+  justify-content: right;
+  align-items: center; 
+  background-color: #f0f0f0;
+}
+
+.login-form {
+  padding: 2rem;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form div {
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}

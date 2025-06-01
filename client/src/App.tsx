@@ -1,6 +1,7 @@
 import './App.css';
 import './footer.css'
 import Footer from './components/footer';
+import Header from './components/header';
 import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
@@ -13,10 +14,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="app-wrapper">
+        <Header />
         <div className="page-content">
           <Outlet />
-       </div>
-       <Footer />
+        </div>
+        <Footer />
       </div>
     </ApolloProvider>
   );
