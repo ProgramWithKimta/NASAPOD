@@ -1,0 +1,60 @@
+/* styling for just the login page */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+
+body {
+    background: #ffffff url("https://img.freepik.com/free-vector/vintage-monochrome-astronaut-concept_225004-1185.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left;
+    margin: 0;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+.login-container {
+  height: 50vh;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  background-color: white;
+}
+
+.login-form {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+  background-color: white;
+}
+
+label {
+  font-family: Rajdhani, helvetica;
+  font-size: 2rem;
+  color: #07478b;
+  font-weight: bold;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.button {
+  font-family: Orbitron;
+  width: 25%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #07478b;
+}
