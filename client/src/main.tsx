@@ -4,7 +4,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import Vote from './pages/SCVote';
+import Apod7day from './pages/Apod7Day';
+import ApodRandom from './pages/ApodRandom';
+import Calendar from './pages/Calendar';
+import FavGallery from './pages/FavoritePhotos';
 import NotFound from './pages/SCNotFound';
 
 const router = createBrowserRouter([
@@ -20,8 +23,17 @@ const router = createBrowserRouter([
         path: '/Home',
         element: <Home />
       }, {
-        path: '/matchup/:id',
-        element: <Vote />
+        path: '/Apod7day',
+        element: <Apod7day />
+      }, {
+        path: '/ApodRandom',
+        element: <ApodRandom />
+      }, {
+        path: '/Calendar',
+        element: <Calendar />
+      }, {
+        path: '/FavGallery',
+        element: <FavGallery />
       },
     ],
   },
