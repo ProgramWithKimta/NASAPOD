@@ -1,6 +1,9 @@
 /* styling for just the footer */
 
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap'); /* NASA-style font */
+
+
 html, body {
   min-height: 100%;
   margin: 0;
@@ -13,6 +16,7 @@ html, body {
 }
 
 footer {
+  font-family: helvetica, sans-serif;
   background-color: white;
   width: 100vh;
   color: #333;

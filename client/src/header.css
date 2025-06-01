@@ -1,5 +1,17 @@
+/* styling for just the header */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap'); /* NASA-style font */
+
 .header-name {
-  display: flex;              
-  align-items: center;        
-  justify-content: flex-start; 
+  font-family: 'Orbitron', sans-serif; /* NASA-style futuristic font */
+  font-size: 7em;                      /* A LOT bigger */
+  font-weight: 100;                    /* Bold */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;                       /* Adjust height as needed */
+  margin: 0 auto;
+  color: black;                        /* Optional: matches NASA color style */
+  background-color: white;            /* Optional: gives it a space feel */
 }
