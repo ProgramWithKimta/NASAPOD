@@ -1,5 +1,8 @@
 /* styling for just the login page */
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+
 body {
     background: #ffffff url("https://img.freepik.com/free-vector/vintage-monochrome-astronaut-concept_225004-1185.jpg");
     background-size: auto;
@@ -12,30 +15,28 @@ body {
   }
 
 .login-container {
-  /* height: 100vh; */
-  width: 300px;
+  height: 50vh;
+  width: 1000px;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center; 
-  background-color: #f0f0f0;
+  background-color: white;
 }
 
 .login-form {
   padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
   background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 300px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.login-form div {
-  margin-bottom: 15px;
-}
-
-.login-form label {
-  display: block;
-  margin-bottom: 5px;
+label {
+  font-family: Rajdhani, helvetica;
+  font-size: 2rem;
+  color: #07478b;
+  font-weight: bold;
 }
 
 .login-form input {
@@ -44,16 +45,16 @@ body {
   box-sizing: border-box;
 }
 
-.login-form button {
-  width: 100%;
+.button {
+  font-family: Orbitron;
+  width: 25%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: black;
   color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
-.login-form button:hover {
-  background-color: #0056b3;
+button:hover {
+  background-color: #07478b;
 }

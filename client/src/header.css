@@ -3,15 +3,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap'); /* NASA-style font */
 
 .header-name {
-  font-family: 'Orbitron', sans-serif; /* NASA-style futuristic font */
-  font-size: 7em;                      /* A LOT bigger */
-  font-weight: 100;                    /* Bold */
+  font-family: 'Orbitron', helvetica; 
+  font-size: 7em;                   
+  font-weight: 100;                  
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px;                       /* Adjust height as needed */
+  height: 150px;                     
   margin: 0 auto;
-  color: black;                        /* Optional: matches NASA color style */
-  background-color: white;            /* Optional: gives it a space feel */
+  color: black;                     
+  background-color: white;            
 }
