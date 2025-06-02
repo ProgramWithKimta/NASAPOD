@@ -1,25 +1,34 @@
 const typeDefs = `
-  type Tech {
-    _id: ID!
-    name: String!
-  }
 
-  type Matchup {
+  type Favorite {
     _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+      title: String!
+      url: String!
+      date: String
+      explanation: String
+      userId: User
+  }
+   type User {
+    _id: ID!
+      email: String!
+      username: String!
+   }   
+  input FavoriteInput{
+    title: String
+    url: String
+    date: String
+    explanation: String
+    userId: String
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    getFavorites: [Favorite]
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
+    saveFavorite(input: FavoriteInput): Favorite
+
+    deleteFavorite(id: String): String
   }
 `;
 

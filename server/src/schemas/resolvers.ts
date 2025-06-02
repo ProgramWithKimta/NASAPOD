@@ -1,30 +1,39 @@
-import Tech, { ITech } from '../models/Tech.js';
-import Matchup, { IMatchup } from '../models/Matchup.js';
+// schemas/photo.ts
 
-const resolvers = {
+import FavoriteModel from '../models/favorite.js';
+import { FavoriteInput } from './typeFavorite.js';
+
+export const photoResolvers = {
   Query: {
-    tech: async (): Promise<ITech[] | null> => {
-      return Tech.find({});
+    //get all the liked photos
+    getFavorites: async () => {
+      return await FavoriteModel.find({});
     },
-    matchups: async (_parent: any, { _id }: { _id: string }): Promise<IMatchup[] | null> => {
-      const params = _id ? { _id } : {};
-      return Matchup.find(params);
-    },
+    // getDailyPhoto: async (_: any, args: { date?: string }) => {
+    //   const response = await axios.get('https://api.nasa.gov/planetary/apod', {
+    //     params: {
+    //       api_key: process.env.NASA_API_KEY,
+    //       date: args.date || undefined,
+    //     },
+    //   });
+    //   return response.data;
+    // },
   },
+
   Mutation: {
-    createMatchup: async (_parent: any, args: any): Promise<IMatchup | null> => {
-      const matchup = await Matchup.create(args);
-      return matchup;
+    //save a photo when the user hits Like button 
+    saveFavorite: async (_: any, { input }: { input: FavoriteInput }) => {
+      const favorite = await FavoriteModel.create(input);
+      return favorite;
     },
-    createVote: async (_parent: any, { _id, techNum }: { _id: string, techNum: number}): Promise<IMatchup | null> => {
-      const vote = await Matchup.findOneAndUpdate(
-        { _id },
-        { $inc: { [`tech${techNum}_votes`]: 1 } },
-        { new: true }
-      );
-      return vote;
+
+    //remove a photo from the favorite gallery 
+    deleteFavorite: async (_: any, { id }: { id: string }) => {
+      const deleted = await FavoriteModel.findByIdAndDelete(id);
+      if (!deleted) {
+        throw new Error("Photo not found");
+      }
+      return `Photo with id ${id} deleted successfully.`;
     },
   },
 };
-
-export default resolvers;
