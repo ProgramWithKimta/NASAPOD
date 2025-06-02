@@ -1,22 +1,16 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_TECH = gql`
-  query tech {
-    tech {
-      _id
-      name
+// to get the picture of the day 
+export const GET_APOD = gql`
+  query GetApod {
+    apod {
+      title
+      date
+      explanation
+      url
+      media_type
     }
   }
 `;
 
-export const QUERY_MATCHUPS = gql`
-  query matchups($_id: String) {
-    matchups(_id: $_id) {
-      _id
-      tech1
-      tech2
-      tech1_votes
-      tech2_votes
-    }
-  }
-`;
+// add queries here for getting random photo, favorite photo, photo based off picking date from calendar
