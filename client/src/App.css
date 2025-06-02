@@ -384,13 +384,13 @@ body {
 .dropdown {
   position: relative;
   display: inline-block; /* shrink to fit content */
-  font-size: 1rem; /* adjust as needed */
+  font-size: .5rem;
 }
 
 .dropdown-button {
   background-color: white;
   color: black;
-  padding: 8px 12px;
+  padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
@@ -409,11 +409,11 @@ body {
 
 .dropdown-content {
   position: absolute;
-  right: 0;
+  left: 0px;
   top: 110%; /* slightly below button */
   background-color: white;
-  min-width: 140px; /* set a good width */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 110px;
+  box-shadow: 0 4px 8px rgb(7, 71, 139);
   border-radius: 5px;
   z-index: 1000;
   overflow: hidden;
@@ -496,12 +496,12 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: #07478b;
   text-decoration: none;
 }
 
 a:hover {
-  color: #065b83;
+  color: #07478b;
   text-decoration: underline;
 }
 
