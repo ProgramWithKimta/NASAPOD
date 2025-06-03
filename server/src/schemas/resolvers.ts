@@ -3,12 +3,13 @@
 import FavoriteModel from '../models/favorite.js';
 import { FavoriteInput } from './typeDefs.js';
 
-export const photoResolvers = {
+export default {
   Query: {
     //get all the liked photos
     getFavorites: async () => {
       return await FavoriteModel.find({});
     },
+    // Marlow did this part
     // getDailyPhoto: async (_: any, args: { date?: string }) => {
     //   const response = await axios.get('https://api.nasa.gov/planetary/apod', {
     //     params: {

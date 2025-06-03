@@ -2,8 +2,9 @@ import express from 'express';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import path from 'path';
+import { resolvers, typeDefs } from './schemas/index.js'
 
-import { typeDefs, resolvers } from './schemas/index.js';
+// import { typeDefs, resolvers } from './schemas/index.js';
 import db from './config/connection.js';
 
 const PORT = process.env.PORT || 3001;

@@ -1,4 +1,8 @@
-import typeDefs from './typeDefs.js';
-import { photoResolvers as resolvers } from './resolvers.js';
+import resolvers from './resolvers.js';
 
-export { typeDefs, resolvers };
+import typeDefs from './typeDefs.js';
+
+export { resolvers, typeDefs };
+
+
+

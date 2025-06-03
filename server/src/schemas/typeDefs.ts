@@ -2,8 +2,9 @@
 
 import { gql } from 'apollo-server-express';
 
-export const typeFavorite = gql`
-  type Favorite {
+export default gql`
+# is this to 
+  type Favorite { 
     _id: ID!
     title: String!
     url: String!
@@ -49,3 +50,4 @@ export interface FavoriteInput {
   explanation?: string;
   userId?: string;
 }
+
