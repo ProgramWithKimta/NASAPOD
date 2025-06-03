@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_APOD } from '../utils/queries';
+import '../App.css';
 
 const Home: React.FC = () => {
   const { data, loading, error } = useQuery(GET_APOD);

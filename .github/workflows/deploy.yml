@@ -1,0 +1,25 @@
+# Name of workflow
+name: Deploy to Render
+
+# Trigger workflow on all pull requests
+on:
+  pull_request:
+    branches:
+      - main
+
+# Jobs to carry out
+jobs:
+    cicd:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: Test
+          run: |
+            npm install
+            npm run build
+            npm run start
+        - name: Deploy to Render
+          env:
+            DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          run: |
+            curl "$DEPLOY_URL"
