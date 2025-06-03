@@ -9,6 +9,8 @@ import ApodRandom from './pages/ApodRandom';
 import Calendar from './pages/Calendar';
 import FavGallery from './pages/FavoritePhotos';
 import NotFound from './pages/SCNotFound';
+import ProtectedRoute from './auth/ProtectedRoute';
+import { AuthProvider } from './auth/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -21,19 +23,39 @@ const router = createBrowserRouter([
         element: <Login />
       }, {
         path: '/Home',
-        element: <Home />
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        )
       }, {
         path: '/Apod7day',
-        element: <Apod7day />
+        element: (
+          <ProtectedRoute>
+            <Apod7day />
+          </ProtectedRoute>
+        )
       }, {
         path: '/ApodRandom',
-        element: <ApodRandom />
+        element: (
+          <ProtectedRoute>
+            <ApodRandom />
+          </ProtectedRoute>
+        )
       }, {
         path: '/Calendar',
-        element: <Calendar />
+        element: (
+          <ProtectedRoute>
+            <Calendar />
+          </ProtectedRoute>
+        )
       }, {
         path: '/FavGallery',
-        element: <FavGallery />
+        element: (
+          <ProtectedRoute>
+            <FavGallery />
+          </ProtectedRoute>
+        )
       },
     ],
   },
@@ -43,7 +65,9 @@ const rootElement = document.getElementById('root');
 
 if(rootElement) {
   ReactDOM.createRoot(rootElement).render(
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   );
 }
 
