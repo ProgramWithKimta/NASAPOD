@@ -1,25 +1,19 @@
 const typeDefs = `
-  type Tech {
-    _id: ID!
-    name: String!
-  }
-
-  type Matchup {
-    _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+  type APOD {
+    date: String
+    explanation: String
+    hdurl: String
+    media_type: String
+    service_version: String
+    title: String
+    url: String
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
-  }
-
-  type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
+    apodToday: APOD
+    apodLast7: [APOD]
+    apodRandom: APOD
+    apodByDate(date: String!): APOD
   }
 `;
 

@@ -1,5 +1,7 @@
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Apod7Day from './pages/Apod7Day';
+import ApodRandom from './pages/ApodRandom';
 
 import App from './App';
 import Login from './pages/Login';
@@ -47,3 +49,4 @@ if(rootElement) {
   );
 }
 
+export default App;
