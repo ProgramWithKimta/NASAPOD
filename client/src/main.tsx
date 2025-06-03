@@ -4,9 +4,12 @@ import Apod7Day from './pages/Apod7Day';
 import ApodRandom from './pages/ApodRandom';
 
 import App from './App';
+import Login from './pages/Login';
 import Home from './pages/Home';
-import Matchup from './pages/SCMatchup';
-import Vote from './pages/SCVote';
+import Apod7day from './pages/Apod7Day';
+import ApodRandom from './pages/ApodRandom';
+import Calendar from './pages/Calendar';
+import FavGallery from './pages/FavoritePhotos';
 import NotFound from './pages/SCNotFound';
 
 const router = createBrowserRouter([
@@ -17,13 +20,22 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Login />
+      }, {
+        path: '/Home',
         element: <Home />
       }, {
-        path: '/matchup',
-        element: <Matchup />
+        path: '/Apod7day',
+        element: <Apod7day />
       }, {
-        path: '/matchup/:id',
-        element: <Vote />
+        path: '/ApodRandom',
+        element: <ApodRandom />
+      }, {
+        path: '/Calendar',
+        element: <Calendar />
+      }, {
+        path: '/FavGallery',
+        element: <FavGallery />
       },
     ],
   },
