@@ -2,15 +2,15 @@ import db from "../config/connection.js";
 import models from "../models/index.js";
 import cleanDB from "./cleanDB.js";
 
-const { Tech } = models;
+const { User } = models;
 
-import techData from './techData.json' assert { type: "json" };
+import userData from './userData.json' with { type: "json" };
 
 db.once('open', async () => {
-  await cleanDB('Tech', 'teches');
+  await cleanDB('User', 'users');
 
-  await Tech.insertMany(techData);
+  await User.insertMany(userData);
 
-  console.log('Technologies seeded!');
+  console.log('Users seeded!');
   process.exit(0);
 });

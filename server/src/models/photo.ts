@@ -1,6 +1,6 @@
 import mongoose, { Model, Document } from 'mongoose';
-import PhotoSchema from '../schemas/photo.schema';
-import { IPhoto } from '../schemas/typePhoto';
+import PhotoSchema from '../schemas/photo';
+import { IPhoto } from '../schemas/typephoto';
 
 export interface IPhotoDocument extends IPhoto, Document {}
 
