@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import AuthService from './utils/auth'
+import AuthService from './auth/auth'
 
 const httpLink = new HttpLink({
   uri: '/graphql',

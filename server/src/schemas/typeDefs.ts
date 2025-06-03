@@ -1,9 +1,17 @@
-// schemas/typeFavorite.ts
+import gql from "graphql-tag";
 
-import { gql } from 'apollo-server-express';
 
 export default gql`
-# is this to 
+type APOD {
+    date: String
+    explanation: String
+    hdurl: String
+    media_type: String
+    service_version: String
+    title: String
+    url: String
+  }
+
   type Favorite { 
     _id: ID!
     title: String!
@@ -22,17 +30,6 @@ export default gql`
     explanation: String
     userId: ID
   }
-
-  type Query {
-    getFavorites: [Favorite!]!
-    # getDailyPhoto(date: String): NASAResponse! Marlow already did this code 
-  }
-
-  type Mutation {
-    saveFavorite(input: FavoriteInput!): Favorite! 
-    deleteFavorite(id: ID!): String!
-  }
-
   type NASAResponse {
     title: String
     url: String
@@ -41,6 +38,20 @@ export default gql`
     copyright: String
     media_type: String
   }
+
+  type Query {
+    getFavorites: [Favorite!]!
+    # getDailyPhoto(date: String): NASAResponse!
+    apodToday: APOD
+    apodLast7: [APOD]
+    apodRandom: APOD
+    apodByDate(date: String!): APOD
+  }
+
+  type Mutation {
+    saveFavorite(input: FavoriteInput!): Favorite! 
+    deleteFavorite(id: ID!): String!
+  } 
 `;
 
 export interface FavoriteInput {
