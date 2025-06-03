@@ -12,3 +12,15 @@ export const GET_APOD_LAST7 = gql`
     }
   }
 `;
+
+export const GET_APOD = gql`
+  query GetApod {
+    apod {
+      title
+      date
+      explanation
+      url
+      media_type
+    }
+  }
+`;
