@@ -1,40 +1,32 @@
-import React from 'react';
-//need to import whatever css framework for the button here
 
 import { useMutation } from '@apollo/client';
 import { SAVE_FAVORITE } from '../graphql/saveFavorite';
+import { Photo } from '../schemas/typePhoto';
 
+const LikeButton: React.FC<{ photo: Photo }> = ({ photo }) => {
+  const [saveFavorite, { loading }] = useMutation(SAVE_FAVORITE);
 
-
-const likeBtn = ({photo}) => {
-    const [saveFavorite, { loading, error }] = useMutation(SAVE_FAVORITE);
-    const handleFavorite = () => {
-        const input = {
-            title: photo.title,
-            url: photo.url,
-            date: photo.date,
-            explanation: photo.explanation,
-          // userId: "optional-user-id" // Add this if needed
-        } 
-        saveFavorite({ variables: { input } });
+  const handleFavorite = () => {
+    const input = {
+      title: photo.title,
+      url: photo.url,
+      date: photo.date,
+      explanation: photo.explanation,
     };
+    saveFavorite({ variables: { input } });
+  };
 
-    <Button onClick={handleFavorite} 
-        disabled={loading}
-        style={{
-        padding: '10px 20px',
-        backgroundColor: '#007bff',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        fontSize: '1rem',
-        cursor: loading ? 'not-allowed' : 'pointer',
-        opacity: loading ? 0.6 : 1,
-        transition: 'background-color 0.2s',
-      }}
+  return (
+    <button
+      onClick={handleFavorite}
+      disabled={loading}
+      className={`px-4 py-2 rounded bg-blue-500 text-white font-medium ${
+        loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'
+      }`}
     >
-        Like
-    </Button>
-}
+      {loading ? 'Liking...' : 'Like'}
+    </button>
+  );
+};
 
-export default likeBtn;
+export default LikeButton;

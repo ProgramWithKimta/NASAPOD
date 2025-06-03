@@ -14,3 +14,4 @@ export const GET_APOD = gql`
 `;
 
 // add queries here for getting random photo, favorite photo, photo based off picking date from calendar
+

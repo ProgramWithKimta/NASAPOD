@@ -1,7 +1,7 @@
 // schemas/photo.ts
 
 import FavoriteModel from '../models/favorite.js';
-import { FavoriteInput } from './typeFavorite.js';
+import { FavoriteInput } from './typeDefs.js';
 
 export const photoResolvers = {
   Query: {
