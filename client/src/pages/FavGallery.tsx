@@ -1,4 +1,4 @@
-// client/src/pages/FavoritePhotos.tsx
+// client/src/pages/FavGallery.tsx
 
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
@@ -7,7 +7,7 @@ import { GET_FAVORITES } from '../graphql/getFavorites';
 
 const PHOTOS_PER_PAGE = 4;
 
-const FavoritePhotos: React.FC = () => {
+const FavGallery: React.FC = () => {
   const { data, loading, error } = useQuery(GET_FAVORITES);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -55,4 +55,4 @@ const FavoritePhotos: React.FC = () => {
   );
 };
 
-export default FavoritePhotos;
+export default FavGallery;
