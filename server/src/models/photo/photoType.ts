@@ -1,4 +1,3 @@
-
 export interface IPhoto {
   title: string;
   url: string;

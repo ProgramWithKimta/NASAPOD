@@ -1,4 +1,4 @@
-import User from './User';
-import Photo from './photo'
+import User from './user/user.js';
+import Photo from './photo/photo.js';
 
-export default { User, Photo };
+export { User, Photo };
