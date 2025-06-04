@@ -7,17 +7,15 @@ console.log("-----USERS DELETED-----")
 
 console.log("-----INSERTING USERS-----")
 const alice = new User({
-    name: "alice",
+    username: "alice",
     password: "AliceBob!25"
 })
 const bob = new User({
-    name: "bob",
+    username: "bob",
     password: "BobAlice!25"
 })
 await alice.save()
 await bob.save()
-console.log(alice)
-console.log(bob)
 console.log("-----USERS INSERTED-----")
 
 db.close();
