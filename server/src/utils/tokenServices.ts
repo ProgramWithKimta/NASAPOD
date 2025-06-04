@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import 'dotenv/config'
 
 // Add username property to Request object
 declare global {
@@ -10,7 +11,7 @@ declare global {
   }
 }
 
-function authenticateToken(req: Request, res: Response, next: NextFunction): void {
+export function authenticateToken(req: Request, res: Response, next: NextFunction): void {
   const authHeader = req.headers['authorization']
   if(!authHeader) {
     return void res.status(403).json({ message: "No Authorization Header" });
@@ -31,4 +32,9 @@ function authenticateToken(req: Request, res: Response, next: NextFunction): voi
   });
 };
 
-export default authenticateToken;
+export function generateToken(username: string, _id: unknown) {
+  const payload = { username, _id };
+  const secretKey = process.env.JWT_SECRET_KEY || '';
+
+  return jwt.sign({ data: payload }, secretKey, { expiresIn: '1h' });
+};

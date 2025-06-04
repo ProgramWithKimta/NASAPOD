@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+import { User } from '../models/index.js';
+import { generateToken } from '../utils/tokenServices.js'
+
 const NASA_API_KEY = process.env.NASA_API_KEY || 'DEMO_KEY';
 const NASA_APOD_URL = 'https://api.nasa.gov/planetary/apod';
 
@@ -54,6 +57,20 @@ const resolvers = {
       }
       return `Photo with id ${id} deleted successfully.`;
     },
+
+    login: async (_: any, { username, password }: any) => {
+      const user = await User.findOne({ username });
+      if(!user) {
+        throw new Error(`${username} does not exist`)
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+      if(!correctPw) {
+        throw new Error(`Incorrect password`)
+      }
+
+     return generateToken(user.username, user._id);
+    }
   },
 };
 export default resolvers;

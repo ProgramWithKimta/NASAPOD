@@ -51,6 +51,7 @@ type APOD {
   type Mutation {
     saveFavorite(input: FavoriteInput!): Favorite! 
     deleteFavorite(id: ID!): String!
+    login(username: String, password: String): String
   } 
 `;
 
