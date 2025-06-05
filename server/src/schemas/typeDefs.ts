@@ -55,11 +55,3 @@ type APOD {
   } 
 `;
 
-export interface FavoriteInput {
-  title: string;
-  url: string;
-  date?: string;
-  explanation?: string;
-  userId?: string;
-}
-

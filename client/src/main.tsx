@@ -9,6 +9,7 @@ import ApodRandom from './pages/ApodRandom';
 import Calendar from './pages/Calendar';
 import FavGallery from './pages/FavoritePhotos';
 import NotFound from './pages/NotFound';
+
 import ProtectedRoute from './auth/ProtectedRoute';
 import { AuthProvider } from './auth/AuthProvider';
 
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <NotFound />,
+    // errorElement: <NotFound />,
     children: [
       {
         index: true,
@@ -52,10 +53,11 @@ const router = createBrowserRouter([
       }, {
         path: '/FavGallery',
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <FavGallery />
-          </ProtectedRoute>
-        )
+          // </ProtectedRoute>
+        ),
+        caseSensitive: false
       },
     ],
   },

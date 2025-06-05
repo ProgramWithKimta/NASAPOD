@@ -6,6 +6,14 @@ import { generateToken } from '../utils/tokenServices.js'
 const NASA_API_KEY = process.env.NASA_API_KEY || 'DEMO_KEY';
 const NASA_APOD_URL = 'https://api.nasa.gov/planetary/apod';
 
+export interface FavoriteInput {
+  title: string;
+  url: string;
+  date?: string;
+  explanation?: string;
+  userId?: string;
+}
+
 async function fetchAPOD(params: Record<string, string | number>) {
   const response = await axios.get(NASA_APOD_URL, {
     params: { api_key: NASA_API_KEY, ...params },
@@ -14,7 +22,6 @@ async function fetchAPOD(params: Record<string, string | number>) {
 }
 
 import FavoriteModel from '../models/favorite.js';
-import { FavoriteInput } from './typeDefs.js';
 
 const resolvers = {
   Query: {
