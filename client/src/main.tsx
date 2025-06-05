@@ -8,7 +8,7 @@ import Apod7day from './pages/Apod7Day';
 import ApodRandom from './pages/ApodRandom';
 import Calendar from './pages/Calendar';
 import FavGallery from './pages/FavoritePhotos';
-import NotFound from './pages/SCNotFound';
+import NotFound from './pages/NotFound';
 import ProtectedRoute from './auth/ProtectedRoute';
 import { AuthProvider } from './auth/AuthProvider';
 
