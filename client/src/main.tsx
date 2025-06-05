@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Apod7day from './pages/Apod7Day';
 import ApodRandom from './pages/ApodRandom';
 import Calendar from './pages/Calendar';
-import FavGallery from './pages/FavoritePhotos';
+import FavGallery from './pages/FavGallery';
 import NotFound from './pages/NotFound';
 
 import ProtectedRoute from './auth/ProtectedRoute';
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    // errorElement: <NotFound />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
