@@ -1,4 +1,3 @@
-// schemas/Photo.ts
 import mongoose from 'mongoose';
 
 const FavoriteSchema = new mongoose.Schema({

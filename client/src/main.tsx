@@ -7,8 +7,8 @@ import Home from './pages/Home';
 import Apod7day from './pages/Apod7Day';
 import ApodRandom from './pages/ApodRandom';
 import Calendar from './pages/Calendar';
-import FavGallery from './pages/FavoritePhotos';
 // import NotFound from './pages/SCNotFound';
+import FavGallery from './pages/FavGallery';
 import ProtectedRoute from './auth/ProtectedRoute';
 import { AuthProvider } from './auth/AuthProvider';
 
@@ -52,10 +52,11 @@ const router = createBrowserRouter([
       }, {
         path: '/FavGallery',
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <FavGallery />
-          </ProtectedRoute>
-        )
+          // </ProtectedRoute>
+        ),
+        caseSensitive: false
       },
     ],
   },
