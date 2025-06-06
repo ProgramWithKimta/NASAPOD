@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Home from './pages/Home';
 import Apod7day from './pages/Apod7Day';
 import ApodRandom from './pages/ApodRandom';
@@ -21,6 +22,9 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Login />
+      }, {
+        path: '/Register',
+        element: <Register />
       }, {
         path: '/Home',
         element: (
@@ -52,9 +56,9 @@ const router = createBrowserRouter([
       }, {
         path: '/FavGallery',
         element: (
-          // <ProtectedRoute>
+          <ProtectedRoute>
             <FavGallery />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         ),
         caseSensitive: false
       },

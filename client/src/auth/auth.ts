@@ -1,7 +1,9 @@
 import { jwtDecode } from 'jwt-decode';
 
 interface UserToken {
-  name: string;
+  data: {
+    username: string
+  };
   exp: number;
 }
 
@@ -18,7 +20,8 @@ class AuthServices {
 
   getUsername() {
     const decodedToken = jwtDecode<UserToken>(this.getToken() || '');
-    return decodedToken["name"]
+    console.log(decodedToken)
+    return decodedToken["data"]["username"]
   }
 
   loggedIn() {
