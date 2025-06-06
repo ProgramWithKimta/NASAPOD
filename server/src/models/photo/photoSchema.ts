@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+// import { IPhoto } from './photoType.js';
 
 const PhotoSchema = new mongoose.Schema({
   title: { type: String, required: true },

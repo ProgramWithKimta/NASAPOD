@@ -68,7 +68,7 @@ const resolvers = {
     login: async (_: any, { username, password }: any) => {
       const user = await User.findOne({ username });
       if(!user) {
-        throw new Error(`${username} does not exist`)
+        throw new Error(`User '${username}' does not exist`)
       }
 
       const correctPw = await user.isCorrectPassword(password);
