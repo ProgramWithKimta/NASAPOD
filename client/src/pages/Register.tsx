@@ -3,31 +3,40 @@ import '../App.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../graphql/login';
+import { REGISTER } from '../graphql/register';
 import { useAuth } from '../auth/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
-    const [serverLogin] = useMutation(LOGIN); // This sends the login info to the server
+    const [registerUser] = useMutation(REGISTER); // This sends the registration info to the server
     const navigate = useNavigate();
-    const localLogin = useAuth().login // This stores the token
+    const localLogin = useAuth().login // This stores the token returned
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if(password !== confirmPassword) {
+            setError("Password and Confirm Password do not match");
+            return;
+        }
+
         try {
-            const response = await serverLogin({ variables: {
+            console.log("registerUser")
+            console.log(REGISTER)
+            const response = await registerUser({ variables: {
                 username,
                 password
             } })
-            const token = response.data.login
+            const token = response.data.register
             localLogin(token)
             navigate("/Home")
         } catch (err) {
             console.error(err);
-            setError("Login failed");
+            setError("Registration failed");
         }
     };
  
@@ -49,9 +58,16 @@ const Login: React.FC = () => {
                     onChange={e => setPassword(e.target.value)}
                     required
                 />
-                <button className='button' type="submit">Login</button>
+                <label>Confirm Password</label>
+                <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={e => setConfirmPassword(e.target.value)}
+                    required
+                />
+                <button className='button' type="submit">Register</button>
                 {error && <p className="error">{error}</p>}
-                <p>First time here? Click <Link to="/Register">HERE</Link> to sign up</p>
+                <p><Link to="/">Login</Link></p>
             </div>
 
         </form>
@@ -59,4 +75,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default Register;

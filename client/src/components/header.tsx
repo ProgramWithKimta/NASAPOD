@@ -6,7 +6,7 @@ import '../App.css'
 const Header = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const { logout } = useAuth();
+  const { logout, getUsername } = useAuth();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -25,6 +25,7 @@ const Header = () => {
 
           {menuOpen && (
             <div className="dropdown-content">
+              <span>{ getUsername() }</span>
               <Link to="/Home" onClick={toggleMenu}>Home</Link>
               <Link to="/Apod7day" onClick={toggleMenu}>7-Day Gallery</Link>
               <Link to="/Calendar" onClick={toggleMenu}>Calendar</Link>

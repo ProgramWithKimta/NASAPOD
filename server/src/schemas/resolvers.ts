@@ -76,7 +76,13 @@ const resolvers = {
         throw new Error(`Incorrect password`)
       }
 
-     return generateToken(user.username, user._id);
+      return generateToken(user.username, user._id);
+    },
+
+    register: async (_: any, { username, password }: any) => {
+      const user = await User.create({ username, password });
+
+      return generateToken(user.username, user._id);
     }
   },
 };

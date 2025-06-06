@@ -52,6 +52,7 @@ type APOD {
     saveFavorite(input: FavoriteInput!): Favorite! 
     deleteFavorite(id: ID!): String!
     login(username: String, password: String): String
+    register(username: String, password: String): String
   } 
 `;
 

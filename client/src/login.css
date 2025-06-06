@@ -32,6 +32,12 @@ body {
   background-color: transparent white;
 }
 
+.login-form .error {
+  margin-top: 16px;
+  color: red;
+  font-style: italic;
+}
+
 label {
   font-family: Rajdhani, helvetica;
   font-size: 2rem;
