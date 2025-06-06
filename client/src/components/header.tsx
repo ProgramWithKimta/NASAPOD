@@ -1,10 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth } from '../auth/AuthProvider';
 import '../App.css'
 
 const Header = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { logout } = useAuth();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -28,7 +30,10 @@ const Header = () => {
               <Link to="/Calendar" onClick={toggleMenu}>Calendar</Link>
               <Link to="/ApodRandom" onClick={toggleMenu}>Random Photo</Link>
               <Link to="/FavGallery" onClick={toggleMenu}>Favorites</Link>
-              <Link to="/" onClick={toggleMenu}>Logout</Link>
+              <Link to="/" onClick={() => { 
+                logout();
+                toggleMenu();
+              }}>Logout</Link>
             </div>
           )}
         </div>

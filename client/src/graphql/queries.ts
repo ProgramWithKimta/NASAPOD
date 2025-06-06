@@ -15,7 +15,7 @@ export const GET_APOD_LAST7 = gql`
 
 export const GET_APOD = gql`
   query GetApod {
-    apod {
+    apodToday {
       title
       date
       explanation
