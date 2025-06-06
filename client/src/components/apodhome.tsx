@@ -7,7 +7,7 @@ const APOD = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const apod = data.apod;
+  const apod = data.apodToday;
 
   return (
     <div style={styles.container}>

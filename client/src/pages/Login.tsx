@@ -1,17 +1,33 @@
-import '../login.css';;
+import '../login.css';
 import '../App.css';
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../graphql/login';
+import { useAuth } from '../auth/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [serverLogin] = useMutation(LOGIN); // This sends the login info to the server
+    const navigate = useNavigate();
+    const localLogin = useAuth().login // This stores the token
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Logging in with:', { username, password });
-        // Add real authentication logic here
+        try {
+            const response = await serverLogin({ variables: {
+                username,
+                password
+            } })
+            const token = response.data.login
+            localLogin(token)
+            navigate("/Home")
+        } catch (err) {
+            console.error(err);
+        }
     };
-
+ 
     return (
     <div className="login-container">
         <form onSubmit={handleSubmit}>
