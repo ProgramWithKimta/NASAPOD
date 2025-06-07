@@ -1,4 +1,3 @@
-// typephoto.ts
 export interface IPhoto {
   title: string;
   url: string;

@@ -1,8 +1,6 @@
-// schemas/Photo.ts
 import mongoose from 'mongoose';
-import {IPhoto} from './typephoto';
 
-const PhotoSchema = new mongoose.Schema({
+const FavoriteSchema = new mongoose.Schema({
   title: { type: String, required: true },
   url: { type: String, required: true },
   date: { type: String }, // ISO format
@@ -11,5 +9,6 @@ const PhotoSchema = new mongoose.Schema({
 }, {
   timestamps: true,
 });
+const FavoriteModel = mongoose.model('Favorite', FavoriteSchema);
 
-export default PhotoSchema;
+export default FavoriteModel;

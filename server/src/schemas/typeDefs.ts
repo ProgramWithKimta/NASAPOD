@@ -1,26 +1,58 @@
-const typeDefs = `
-  type Tech {
-    _id: ID!
-    name: String!
+import gql from "graphql-tag";
+
+
+export default gql`
+type APOD {
+    date: String
+    explanation: String
+    hdurl: String
+    media_type: String
+    service_version: String
+    title: String
+    url: String
   }
 
-  type Matchup {
+  type Favorite { 
     _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+    title: String!
+    url: String!
+    date: String
+    explanation: String
+    userId: ID
+    createdAt: String
+    updatedAt: String
+  }
+
+  input FavoriteInput {
+    title: String!
+    url: String!
+    date: String
+    explanation: String
+    userId: ID
+  }
+  type NASAResponse {
+    title: String
+    url: String
+    date: String
+    explanation: String
+    copyright: String
+    media_type: String
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    getFavorites: [Favorite!]!
+    # getDailyPhoto(date: String): NASAResponse!
+    apodToday: APOD
+    apodLast7: [APOD]
+    apodRandom: APOD
+    apodByDate(date: String!): APOD
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
-  }
+    saveFavorite(input: FavoriteInput!): Favorite! 
+    deleteFavorite(id: ID!): String!
+    login(username: String, password: String): String
+    register(username: String, password: String): String
+  } 
 `;
 
-export default typeDefs;

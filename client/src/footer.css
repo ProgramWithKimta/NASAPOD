@@ -1,0 +1,27 @@
+/* styling for just the footer */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  font-family: Rajdhani, helvetica;
+  font-weight: bold;
+  background-color: white;
+  width: 100vh;
+  color: #07478b;
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}

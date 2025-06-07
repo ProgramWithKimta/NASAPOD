@@ -1,16 +1,10 @@
-import { useLocation } from 'react-router-dom';
+import '../App.css'
 
-function NotFound() {
-  let location = useLocation();
-  return (
-    <div className="card bg-white card-rounded w-50">
-      <div className="card-header bg-dark text-center">
-        <h1>
-          No match for <code>{location.pathname}</code>
-        </h1>
-      </div>
+function NotFound () {
+    return (
+    <div className="calendar"> Sorry, the page you are looking for does not exist. 
     </div>
-  );
-}
+    );
+};
 
 export default NotFound;
