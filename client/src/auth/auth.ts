@@ -20,7 +20,6 @@ class AuthServices {
 
   getUsername() {
     const decodedToken = jwtDecode<UserToken>(this.getToken() || '');
-    console.log(decodedToken)
     return decodedToken["data"]["username"]
   }
 
