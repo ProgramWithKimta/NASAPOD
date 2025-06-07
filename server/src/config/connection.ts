@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import 'dotenv/config'
+import 'dotenv/config' 
 
 try {
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/NASAPOD');
