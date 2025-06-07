@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_APOD_LAST7 } from '../graphql/queries';
 
-const ApodGallery: React.FC = () => {
+const Apod7day: React.FC = () => {
   const { loading, error, data } = useQuery(GET_APOD_LAST7);
 
   if (loading) return <p>Loading...</p>;
@@ -38,4 +38,4 @@ const ApodGallery: React.FC = () => {
   );
 };
 
-export default ApodGallery;
+export default Apod7day;
