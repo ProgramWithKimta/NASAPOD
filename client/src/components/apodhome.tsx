@@ -1,5 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GET_APOD } from '../graphql/queries';
+import LikeButton from './Button';
+
 
 const APOD = () => {
   const { loading, error, data } = useQuery(GET_APOD);
@@ -9,39 +11,31 @@ const APOD = () => {
 
   const apod = data.apodToday;
 
-  return (
-    <div style={styles.container}>
-      <h1>{apod.title}</h1>
-      <p>{apod.date}</p>
+return (
+    <div className="apod-container">
+      <div className="apod-left">
+        {apod.media_type === 'image' ? (
+          <img src={apod.url} alt={apod.title} className="apod-image" />
+        ) : (
+          <iframe
+            src={apod.url}
+            title={apod.title}
+            width="100%"
+            height="250"
+            allowFullScreen
+            className="apod-image"
+          ></iframe>
+        )}
+        <h1 className="apod-title">{apod.title}</h1>
+        <p className="apod-date">{apod.date}</p>
+        <LikeButton photo={apod} />
+      </div>
 
-      {apod.media_type === 'image' ? (
-        <img src={apod.url} alt={apod.title} style={styles.image} />
-      ) : (
-        <iframe
-          src={apod.url}
-          title={apod.title}
-          width="100%"
-          height="500"
-          allowFullScreen
-        ></iframe>
-      )}
-
-      <p>{apod.explanation}</p>
+      <div className="apod-right">
+        <p className="apod-description">{apod.explanation}</p>
+      </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '2rem',
-    textAlign: 'center' as const,
-  },
-  image: {
-    maxWidth: '100%',
-    borderRadius: '10px',
-  },
 };
 
 export default APOD;

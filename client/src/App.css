@@ -1,3 +1,4 @@
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -435,6 +436,58 @@ body {
 
 .dropdown-content a:hover {
   background-color: #f0f0f0;
+}
+
+/* home component styling */
+.apod-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.apod-left {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.apod-right {
+  flex: 1;
+  text-align: left;
+}
+
+.apod-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.apod-title {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: monospace, Helvetica, sans-serif;
+  color:#07478b;
+}
+
+.apod-date {
+  font-family: monospace, Helvetica, sans-serif;
+  margin-bottom: 7px;
+
+}
+
+.apod-description {
+  font-family: Helvetica, sans-serif;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
 }
 
 h1,
