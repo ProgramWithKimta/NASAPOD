@@ -1,12 +1,14 @@
 import express from 'express';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
-import path from 'path';
+import 'dotenv/config'
+
 import { resolvers, typeDefs } from './schemas/index.js'
 import db from './config/connection.js';
+import { getUserFromToken } from './utils/tokenServices.js';
 
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -24,7 +26,22 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   
-  app.use('/graphql', expressMiddleware(server));
+  app.use('/graphql', expressMiddleware(server, {
+    context: async ({ req }) => {
+      let token;
+
+      if(req.headers.authorization) {
+        token = req.headers.authorization.split(' ').pop()?.trim();
+      }
+
+      if(!token) {
+        return { user: undefined }
+      }
+
+      const user = getUserFromToken(token);
+      return { user }
+    }
+  }));
 
   // if we're in production, serve client/dist as static assets
   if (process.env.NODE_ENV === 'production') {

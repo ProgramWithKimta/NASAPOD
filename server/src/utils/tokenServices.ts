@@ -1,4 +1,3 @@
-import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config'
 
@@ -11,25 +10,13 @@ declare global {
   }
 }
 
-export function authenticateToken(req: Request, res: Response, next: NextFunction): void {
-  const authHeader = req.headers['authorization']
-  if(!authHeader) {
-    return void res.status(403).json({ message: "No Authorization Header" });
+export function getUserFromToken(token: string) {
+  try {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY!) as jwt.JwtPayload;
+    return decodedToken.data.username;
+  } catch (err) {
+    return undefined;
   }
-
-  const token = (authHeader as string).split(' ')[1];
-
-  if(!token) {
-    return void res.status(403).json({ message: "No Token Sent. Must be in format 'Bearer {token}" });
-  }
-
-  jwt.verify(token, process.env.JWT_SECRET_KEY!, (err: any, decoded: any) => {
-    if(err) {
-      return res.status(403).json({ message: "Token Expired" });
-    }
-    req.username = decoded.username;
-    return void next()
-  });
 };
 
 export function generateToken(username: string, _id: unknown) {
