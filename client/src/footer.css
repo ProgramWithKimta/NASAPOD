@@ -22,6 +22,8 @@ footer {
   width: 100vh;
   color: #07478b;
   padding: 1rem;
-  text-align: center;
+  text-align: right;
   margin-top: auto;
+  position: sticky; /* Sticky footer at the bottom */
+  bottom: 0;
 }
