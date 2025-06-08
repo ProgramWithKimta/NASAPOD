@@ -14,7 +14,8 @@ const FavGallery: React.FC = () => {
   if (loading) return <p>Loading favorites...</p>;
   if (error) return <p>Error loading favorites 😢</p>;
 
-  const favorites = data?.getFavorites || [];
+  const favorites = data?.getFavorites || []; 
+  // need to update code to grab favorites from the user - match the user token (username)
   const totalPages = Math.ceil(favorites.length / PHOTOS_PER_PAGE);
 
   const startIndex = currentPage * PHOTOS_PER_PAGE;

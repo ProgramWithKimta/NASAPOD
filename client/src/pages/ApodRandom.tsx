@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
+import LikeButton from '../components/Button';
 
 const GET_APOD_RANDOM = gql`
   query GetApodRandom {
@@ -30,6 +31,7 @@ const ApodRandom: React.FC = () => {
       </button>
       <h2>{apod.title}</h2>
       <p>{apod.date}</p>
+      <LikeButton photo={apod} />
       {apod.media_type === 'image' ? (
         <img
           src={apod.url}

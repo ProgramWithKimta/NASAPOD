@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_APOD_LAST7 } from '../graphql/queries';
+import LikeButton from '../components/Button';
 
 const Apod7day: React.FC = () => {
   const { loading, error, data } = useQuery(GET_APOD_LAST7);
@@ -19,6 +20,7 @@ const Apod7day: React.FC = () => {
             <div key={apod.date} style={{ width: 300 }}>
               <h3>{apod.title}</h3>
               <p>{apod.date}</p>
+              <LikeButton photo={apod} />
               {apod.media_type === 'image' ? (
                 <img
                   src={apod.url}
