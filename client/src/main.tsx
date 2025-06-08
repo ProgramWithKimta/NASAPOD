@@ -35,30 +35,30 @@ const router = createBrowserRouter([
       }, {
         path: '/Apod7day',
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <Apod7day />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         )
       }, {
         path: '/ApodRandom',
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <ApodRandom />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         )
       }, {
         path: '/Calendar',
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <Calendar />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         )
       }, {
         path: '/FavGallery',
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <FavGallery />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         ),
         caseSensitive: false
       },
