@@ -10,29 +10,30 @@ const Apod7day: React.FC = () => {
   if (error) return <p>Error loading images.</p>;
 
   return (
-    <div>
-      <h1>NASA APOD - Last 7 Days</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem' }}>
+    <div className="apod7day-container">
+      <h1 className="apod7day-page-title">NASA APOD - Last 7 Days</h1>
+      <div className="apod7day-div">
         {data.apodLast7
           .slice()
           .reverse()
           .map((apod: any) => (
-            <div key={apod.date} style={{ width: 300 }}>
-              <h3>{apod.title}</h3>
-              <p>{apod.date}</p>
+            <div key={apod.date} className="apod7day-card">
+              <h1 className="apod7day-img-title">{apod.title}</h1>
+              <p className="apod7day-date">{apod.date}</p>
               <LikeButton photo={apod} />
               {apod.media_type === 'image' ? (
                 <img
                   src={apod.url}
                   alt={apod.title}
                   style={{ width: '100%', borderRadius: 8 }}
+                  className="apod7day-image"
                 />
               ) : (
                 <a href={apod.url} target="_blank" rel="noopener noreferrer">
                   View Video
                 </a>
               )}
-              <p style={{ fontSize: '0.9rem' }}>{apod.explanation}</p>
+              <p className="apod7day-description">{apod.explanation}</p>
             </div>
           ))}
       </div>
