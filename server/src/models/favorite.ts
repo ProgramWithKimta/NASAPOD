@@ -5,7 +5,7 @@ const FavoriteSchema = new mongoose.Schema({
   url: { type: String, required: true },
   date: { type: String }, // ISO format
   explanation: { type: String },
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // If users exist
+  username: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // If users exist
 }, {
   timestamps: true,
 });
