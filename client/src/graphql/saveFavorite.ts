@@ -8,6 +8,7 @@ export const SAVE_FAVORITE = gql`
       url
       date
       explanation
+      userId
     }
   }
 `;

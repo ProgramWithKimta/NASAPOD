@@ -2,9 +2,11 @@
 import { useMutation } from '@apollo/client';
 import { SAVE_FAVORITE } from '../graphql/saveFavorite';
 import { Photo } from '../schemas/typePhoto';
+import { useAuth } from '../auth/AuthProvider';
 
 const LikeButton: React.FC<{ photo: Photo }> = ({ photo }) => {
   const [saveFavorite, { loading }] = useMutation(SAVE_FAVORITE);
+  const getUsername = useAuth().getUsername
 
   const handleFavorite = () => {
     const input = {
@@ -12,9 +14,14 @@ const LikeButton: React.FC<{ photo: Photo }> = ({ photo }) => {
       url: photo.url,
       date: photo.date,
       explanation: photo.explanation,
+      username: getUsername()
     };
+    console.log(input);
     saveFavorite({ variables: { input } });
   };
+
+  // console.log(photo);
+  // console.log(getUsername());
 
   return (
     <button

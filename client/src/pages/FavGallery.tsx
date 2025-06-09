@@ -3,18 +3,25 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 
-import { GET_FAVORITES } from '../graphql/getFavorites';
+// import { GET_FAVORITES } from '../graphql/getFavorites';
+import { GET_USER_FAVORITES } from '../graphql/getFavorites';
+import { useAuth } from '../auth/AuthProvider';
 
 const PHOTOS_PER_PAGE = 4;
 
 const FavGallery: React.FC = () => {
-  const { data, loading, error } = useQuery(GET_FAVORITES);
+  const getUsername = useAuth().getUsername
+  const { data, loading, error } = useQuery(GET_USER_FAVORITES, {
+    variables: {
+      username: getUsername()
+    }
+  });
   const [currentPage, setCurrentPage] = useState(0);
 
   if (loading) return <p>Loading favorites...</p>;
   if (error) return <p>Error loading favorites 😢</p>;
 
-  const favorites = data?.getFavorites || []; 
+  const favorites = data?.getUserFavorites || []; 
   // need to update code to grab favorites from the user - match the user token (username)
   const totalPages = Math.ceil(favorites.length / PHOTOS_PER_PAGE);
 
