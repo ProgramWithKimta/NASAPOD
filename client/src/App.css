@@ -706,6 +706,88 @@ body {
   font-weight: bold;
 }
 
+/* fav gallery component styling */
+.favgallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  max-height: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.favgallery-div {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2rem;
+  width: 100%;
+  justify-items: center;
+  overflow-y: scroll;
+}
+
+@media (max-width: 1200px) {
+  .favgallery-div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .favgallery-div {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .favgallery-div {
+    grid-template-columns: 1fr;
+  }
+}
+
+.favgallery-page-title {
+  margin-top: 0;
+  font-size: 2rem;
+  text-align: center;
+  font-family: monospace, Helvetica, sans-serif;
+  color:#07478b;
+}
+
+.favgallery-img-title {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: monospace, Helvetica, sans-serif;
+  color:#07478b;
+}
+
+.favgallery-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.favgallery-date {
+  font-family: monospace, Helvetica, sans-serif;
+  margin-bottom: 7px;
+
+}
+
+.favgallery-card {
+  text-align: center; /* centers h1, p, etc. */
+  width: 300px;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1,
 h2,
 h3,
