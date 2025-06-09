@@ -16,12 +16,8 @@ const LikeButton: React.FC<{ photo: Photo }> = ({ photo }) => {
       explanation: photo.explanation,
       username: getUsername()
     };
-    console.log(input);
     saveFavorite({ variables: { input } });
   };
-
-  // console.log(photo);
-  // console.log(getUsername());
 
   return (
     <button

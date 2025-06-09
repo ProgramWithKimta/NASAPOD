@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Types } from 'mongoose';
 
 import { User } from '../models/index.js';
 import { generateToken } from '../utils/tokenServices.js'
@@ -31,15 +32,11 @@ const resolvers = {
     },
     getUserFavorites: async (_: any, { username }: { username: string }) => {
       const user = await User.findOne({ username }).populate('favorites')
-      // console.log(user)
 
       if(!user) {
         throw new Error("Error saving favorite")
       }
 
-      // const favoritesById = user.favorites
-      // console.log(favoritesById)
-      // console.log(await user.populate('favorites'))
       return user.favorites;
     },
     apodToday: async () => {
@@ -65,11 +62,7 @@ const resolvers = {
   Mutation: {
     //save a photo when the user hits Like button 
     saveFavorite: async (_: any, { input }: { input: FavoriteInput }) => {
-      console.log("saveFavorite");
-      // console.log("Input: ", input);
-
       const user = await User.findOne({ username: input.username });
-      // console.log("User: ", user);
 
       if(!user) {
         throw new Error("Error saving favorite")
@@ -84,29 +77,23 @@ const resolvers = {
           date: input.date,
           explanation: input.explanation
         });
-        favorite.save();
+        await favorite.save();
       }
-      console.log("Favorite: ", favorite)
 
       // Don't allow favoring same image twice
       if(!user.favorites.includes(favorite._id)) {
-        console.log("user.favorites.push")
         user.favorites.push(favorite._id)
-        user.save();
+        await user.save();
       }
 
       return favorite;
     },
 
     deleteFavoriteByUser: async(_: any, { username, favorite_id }: { username: string, favorite_id: string }) => {
-      const user = await User.findOne({ username })
-
-      if(!user) {
-        throw new Error("Error saving favorite")
-      }
-
-      user.updateOne({ $pull: { favorites: favorite_id }})
-      user.save();
+      await User.updateOne(
+        { username },
+        { $pull: { favorites: new Types.ObjectId(favorite_id) } }
+      );
     },
 
     //remove a photo from the favorite gallery 

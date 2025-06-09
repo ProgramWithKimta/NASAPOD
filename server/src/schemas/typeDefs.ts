@@ -51,7 +51,7 @@ type APOD {
 
   type Mutation {
     saveFavorite(input: FavoriteInput!): Favorite! 
-    deleteFavoriteByUser(username: String!, favorite_id: ID!)
+    deleteFavoriteByUser(username: String!, favorite_id: ID!): Boolean
     deleteFavorite(id: ID!): String!
     login(username: String, password: String): String
     register(username: String, password: String): String

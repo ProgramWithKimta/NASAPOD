@@ -3,18 +3,17 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 
-// import { GET_FAVORITES } from '../graphql/getFavorites';
 import { GET_USER_FAVORITES } from '../graphql/getFavorites';
 import { useAuth } from '../auth/AuthProvider';
+import UnlikeButton from '../components/UnlikeButton';
 
 const PHOTOS_PER_PAGE = 4;
 
 const FavGallery: React.FC = () => {
-  const getUsername = useAuth().getUsername
+  const username = useAuth().getUsername()
   const { data, loading, error } = useQuery(GET_USER_FAVORITES, {
-    variables: {
-      username: getUsername()
-    }
+    variables: { username },
+    fetchPolicy: 'network-only'
   });
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -37,6 +36,7 @@ const FavGallery: React.FC = () => {
             <img src={photo.url} alt={photo.title} className="favgallery-image" />
             <h2 className="favgallery-img-title">{photo.title}</h2>
             <p className="favgallery-date">{photo.date}</p>
+            <UnlikeButton photo={photo._id} />
           </div>
         ))}
       </div>
