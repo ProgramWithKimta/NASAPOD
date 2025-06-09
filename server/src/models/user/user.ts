@@ -1,9 +1,11 @@
-import { Schema, model, type Document } from 'mongoose';
+import { Schema, model, Types, type Document } from 'mongoose';
 import bcrypt from 'bcrypt';
+// import { FavoriteSchema } from '../favorite.js';
 
 export interface IUser extends Document {
   username: string;
   password: string;
+  favorites: Types.ObjectId[];
   isCorrectPassword(password: string): Promise<boolean>;
 }
 
@@ -16,7 +18,12 @@ const userSchema = new Schema<IUser>({
   password: {
     type: String,
     required: true,
-  }
+    minlength: [8, "Password must be at least 8 characters"]
+  },
+  favorites: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Favorite'
+  }]
 });
 
 // hash user password

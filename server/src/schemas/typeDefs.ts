@@ -28,7 +28,7 @@ type APOD {
     url: String!
     date: String
     explanation: String
-    userId: ID
+    username: String
   }
   type NASAResponse {
     title: String
@@ -41,6 +41,7 @@ type APOD {
 
   type Query {
     getFavorites: [Favorite!]!
+    getUserFavorites(username: String!): [Favorite!]!
     # getDailyPhoto(date: String): NASAResponse!
     apodToday: APOD
     apodLast7: [APOD]
@@ -50,6 +51,7 @@ type APOD {
 
   type Mutation {
     saveFavorite(input: FavoriteInput!): Favorite! 
+    deleteFavoriteByUser(username: String!, favorite_id: ID!): Boolean
     deleteFavorite(id: ID!): String!
     login(username: String, password: String): String
     register(username: String, password: String): String

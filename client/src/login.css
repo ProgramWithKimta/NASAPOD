@@ -32,8 +32,11 @@ body {
   background-color: transparent white;
 }
 
+.login-form p {
+  margin: 0;
+}
+
 .login-form .error {
-  margin-top: 16px;
   color: red;
   font-style: italic;
 }
