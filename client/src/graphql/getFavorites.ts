@@ -13,3 +13,14 @@ export const GET_FAVORITES = gql`
     }
   }
 `;
+
+export const GET_USER_FAVORITES = gql`
+  query GetUserFavorites($username: String!) {
+    getUserFavorites(username: $username) {
+      _id
+      title
+      url
+      date
+      explanation
+    }
+  }`

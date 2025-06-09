@@ -63,6 +63,7 @@ const Register: React.FC = () => {
                     onChange={e => setConfirmPassword(e.target.value)}
                     required
                 />
+                <p>Password must be at least 8 characters</p>
                 <button className='button' type="submit">Register</button>
                 {error && <p className="error">{error}</p>}
                 <p><Link to="/">Login</Link></p>
