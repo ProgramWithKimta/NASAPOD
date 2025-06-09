@@ -7,7 +7,7 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Apod7day from './pages/Apod7Day';
 import ApodRandom from './pages/ApodRandom';
-import Calendar from './pages/Calendar';
+import ApodCalendar from './pages/ApodCalendar';
 import NotFound from './pages/NotFound';
 import FavGallery from './pages/FavGallery';
 import ProtectedRoute from './auth/ProtectedRoute';
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         path: '/Calendar',
         element: (
           <ProtectedRoute>
-            <Calendar />
+            <ApodCalendar />
           </ProtectedRoute>
         )
       }, {

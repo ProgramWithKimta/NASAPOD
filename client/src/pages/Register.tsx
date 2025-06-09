@@ -25,8 +25,6 @@ const Register: React.FC = () => {
         }
 
         try {
-            console.log("registerUser")
-            console.log(REGISTER)
             const response = await registerUser({ variables: {
                 username,
                 password

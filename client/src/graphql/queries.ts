@@ -24,3 +24,15 @@ export const GET_APOD = gql`
     }
   }
 `;
+
+export const GET_APOD_BYDATE = gql`
+  query GetApodByDate($date: String!) {
+    apodByDate(date: $date) {
+      title
+      date
+      explanation
+      url
+      media_type
+    }
+  }
+`;
