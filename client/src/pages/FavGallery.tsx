@@ -22,15 +22,14 @@ const FavGallery: React.FC = () => {
   const paginatedPhotos = favorites.slice(startIndex, startIndex + PHOTOS_PER_PAGE);
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Your Favorite Photos</h1>
-
-      <div className="grid grid-cols-2 gap-4">
+    <div className="favgallery-container">
+      <h1 className="favgallery-page-title">Your Favorite Photos</h1>
+      <div className="favgallery-div">
         {paginatedPhotos.map((photo: any) => (
-          <div key={photo._id} className="bg-white shadow-md rounded p-3">
-            <img src={photo.url} alt={photo.title} className="w-full h-48 object-cover rounded" />
-            <h2 className="mt-2 text-lg font-semibold">{photo.title}</h2>
-            <p className="text-sm text-gray-600">{photo.date}</p>
+          <div key={photo._id} className="favgallery-card">
+            <img src={photo.url} alt={photo.title} className="favgallery-image" />
+            <h2 className="favgallery-img-title">{photo.title}</h2>
+            <p className="favgallery-date">{photo.date}</p>
           </div>
         ))}
       </div>
