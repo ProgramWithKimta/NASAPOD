@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { GET_APOD_BYDATE } from '../graphql/queries';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import LikeButton from '../components/Button';
 
 function Calendar () {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -20,8 +21,8 @@ function Calendar () {
 
   if (loading) return <p>Loading...</p>;
   if (error) return (
-    <div style={styles.container}>
-      <p style={styles.error}>No photos for that date</p>
+    <div className="apod-calender">
+      <p className="apodcal-error">No photos for that date</p>
       <label>Select a date: </label>
       <DatePicker
         selected={selectedDate}
@@ -35,19 +36,21 @@ function Calendar () {
   const apod = data.apodByDate;
 
   return (
-    <div style={styles.container}>
-      <label>Select a date: </label>
+    <div className="apodcal-container">
+      <h1 className="apodcal-page-title">Calender APOD Picker</h1>
+      <div className="apodcal-div">
+      <label className="apodcal-select">Select a date: </label>
       <DatePicker
         selected={selectedDate}
         onChange={(date) => setSelectedDate(date ?? new Date())}
         dateFormat="yyyy-MM-dd"
         placeholderText="Click to select a date"
       />
-      <h1>{apod.title}</h1>
-      <p>{apod.date}</p>
-
+      <h1 className="apodcal-img-title">{apod.title}</h1>
+      <p className="apodcal-date">{apod.date}</p>
+      <LikeButton photo={apod} />
       {apod.media_type === 'image' ? (
-        <img src={apod.url} alt={apod.title} style={styles.image} />
+        <img src={apod.url} alt={apod.title} className="apodcal-image" />
       ) : (
         <iframe
           src={apod.url}
@@ -58,26 +61,10 @@ function Calendar () {
         ></iframe>
       )}
 
-      <p>{apod.explanation}</p>
+      <p className="apodcal-description">{apod.explanation}</p>
+      </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '2rem',
-    textAlign: 'center' as const,
-  },
-  image: {
-    maxWidth: '100%',
-    borderRadius: '10px',
-  },
-  error: {
-    color: 'red',
-    fontStyle: 'italic'
-  }
 };
 
 export default Calendar;

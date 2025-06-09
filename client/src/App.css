@@ -602,24 +602,6 @@ body {
   overflow-y: scroll;
 }
 
-@media (max-width: 1200px) {
-  .apod7day-div {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .apod7day-div {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .apod7day-div {
-    grid-template-columns: 1fr;
-  }
-}
-
 .apodrandom-page-title {
   margin-top: 0;
   font-size: 2rem;
@@ -655,6 +637,73 @@ body {
   font-size: 1rem;
   max-width: 500px;
   text-align: center;
+}
+
+/* apod calendar component styling */
+.apodcal-container, 
+.apod-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  max-height: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.apodcal-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.apodcal-page-title {
+  margin-top: 0;
+  font-size: 2rem;
+  text-align: center;
+  font-family: monospace, Helvetica, sans-serif;
+  color:#07478b;
+}
+
+.apodcal-img-title {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: monospace, Helvetica, sans-serif;
+  color:#07478b;
+}
+
+.apodcal-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.apodcal-date {
+  font-family: monospace, Helvetica, sans-serif;
+  margin-bottom: 7px;
+}
+
+.apodcal-description {
+  font-family: Helvetica, sans-serif;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  max-width: 500px;
+  text-align: center;
+}
+
+.apodcal-select {
+  font-family: Rajdhani, helvetica;
+  font-size: 1rem;
+  color: #07478b;
+  font-weight: bold;
 }
 
 h1,
