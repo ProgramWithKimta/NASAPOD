@@ -11,13 +11,13 @@ const Header = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   // Check if current path is login page (adjust if your login path is different)
-  const isLoginPage = location.pathname === '/';
+  const showMenu = location.pathname !== '/' && location.pathname !== '/Register';
 
   return (
     <header className="header-name"> The NASAPOD
 
       {/* Only show menu if NOT on login page */}
-      {!isLoginPage && (
+      {showMenu && (
         <div className="dropdown">
           <button className="dropdown-button" onClick={toggleMenu}>
             ☰ Menu ▼
