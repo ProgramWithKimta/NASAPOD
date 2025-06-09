@@ -20,10 +20,9 @@ const LikeButton: React.FC<{ photo: Photo }> = ({ photo }) => {
     <button
       onClick={handleFavorite}
       disabled={loading}
-      className={`px-4 py-2 rounded bg-blue-500 text-white font-medium ${
-        loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'
-      }`}
+      className={`text-2xl ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:text-yellow-400'}`}
     >
+        ★
       {loading ? 'Liking...' : 'Like'}
     </button>
   );

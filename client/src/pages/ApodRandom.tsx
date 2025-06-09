@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
+import LikeButton from '../components/Button';
 
 const GET_APOD_RANDOM = gql`
   query GetApodRandom {
@@ -23,25 +24,28 @@ const ApodRandom: React.FC = () => {
   const apod = data.apodRandom;
 
   return (
-    <div style={{ maxWidth: 600, margin: '2rem auto', textAlign: 'center' }}>
-      <h1>Random NASA APOD</h1>
+    <div className="apodrandom-container">
+      <h1 className="apodrandom-page-title">Random NASA APOD</h1>
+      <div className="apodrandom-div">
       <button onClick={() => refetch()} style={{ marginBottom: '1rem' }}>
         Show Another Random Image
       </button>
-      <h2>{apod.title}</h2>
-      <p>{apod.date}</p>
+      <h1 className="apodrandom-img-title">{apod.title}</h1>
+      <p className="apodrandom-date">{apod.date}</p>
+      <LikeButton photo={apod} />
       {apod.media_type === 'image' ? (
         <img
           src={apod.url}
           alt={apod.title}
-          style={{ width: '100%', borderRadius: 8, marginBottom: '1rem' }}
+          className="apodrandom-image"
         />
       ) : (
         <a href={apod.url} target="_blank" rel="noopener noreferrer">
           View Video
         </a>
       )}
-      <p style={{ fontSize: '1rem', marginTop: '1rem' }}>{apod.explanation}</p>
+      <p className="apodrandom-description">{apod.explanation}</p>
+      </div>
     </div>
   );
 };
